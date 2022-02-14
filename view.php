@@ -90,8 +90,12 @@ JOIN users ON posts.user_id = users.id where p_id='$id'");
                           <hr>
                       </div>
                       <?php 
-                   $callingPost = mysqli_query($connect, "select * from posts where p_id != '$id'");
+                      $cat_id=$data['cat_id'];
+                   $callingPost = mysqli_query($connect, "select * from posts where p_id != '$id' AND cat_id = '$cat_id'");
+                   $count_cat=mysqli_num_rows($callingPost);
+                   if($count_cat>=1){
                    while($row = mysqli_fetch_array($callingPost)){
+                       
                        ?>
                       <div class="col-3">
                           <div class="card" style="height:340px;">
@@ -103,7 +107,14 @@ JOIN users ON posts.user_id = users.id where p_id='$id'");
                             </div>
                           </div>
                       </div>
-                      <?php } ?>
+                      <?php } 
+                      }
+                      else{
+                        echo "<div class='alert alert-danger mt-3'>
+                        <h1 class='alert-heading text-center'>Not Found </h1> <p class='text-center'>This type of product</p>
+                      </div>";
+                      }
+                          ?>
                   </div>
             
            

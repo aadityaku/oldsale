@@ -6,7 +6,12 @@
             <input type="submit" class="btn text-white bg-red ms-2" name="go">
         </form>
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="./index.php" class="nav-link">Home</a></li>
+            <?php if(isset($_SESSION['user'])):
+                ?>
+                <li class="nav-item"><a href="user/index.php" class="nav-link">Home</a></li>
+            <?php else:?>
+            <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+            <?php endif;?>
             <li class="nav-item"><a href="user/add_post.php" class="nav-link">Post Here</a></li>
            <?php 
            if(isset($_SESSION['user'])):

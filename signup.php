@@ -70,7 +70,8 @@
                              $query=mysqli_query($connect,"insert into users(contact,name,email,password)
                              value('$contact','$name','$email','$password')");
                              if($query){
-                                 echo "<script>window.open('index.php','_self')</script>";
+                                 $_SESSION['user']=$contact;                               
+                                echo "<script>window.open('user/index.php','_self')</script>";
                              }
                              }
                             }
